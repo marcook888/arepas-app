@@ -1,0 +1,65 @@
+//ejecutar todo paso por paso
+
+docker run -d -p 3306:3306 --name arepasDB -e MYSQL_ROOT_PASSWORD=toor mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+docker exec -it arepasDB mysql -uroot -p
+
+create database arepasDB;
+
+use arepasDB;
+
+CREATE TABLE Products(
+	Id int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	Name varchar(50) NOT NULL,
+	Description varchar(250) NOT NULL,
+	Price DECIMAL NOT NULL,
+	ImageName varchar(250) NOT NULL
+);
+
+CREATE TABLE Customers(
+	Id int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	FirstName varchar(50) NOT NULL,
+	LastName varchar(50) NOT NULL,
+	BirthOfDate date NOT NULL,
+	RegisterDate date NOT NULL,
+	Addres varchar(255) NOT NULL,
+	PhoneNumber varchar(50) NOT NULL,
+	Email varchar(255) NOT NULL,
+	Password varchar(50) NOT NULL
+);
+
+CREATE TABLE Orders(
+	Id int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	CreateDate datetime NOT NULL,
+	CustomerId int UNSIGNED NOT NULL,
+	DeliveryFirstName varchar(50) NOT NULL,
+	DeliveryLastName varchar(50) NOT NULL,
+	DeliveryAddress varchar(255) NOT NULL,
+	DeliveryPhoneNombre varchar(50) NOT NULL,
+	Notes varchar(255) NULL,
+	TotalOrder decimal NOT NULL,
+	FOREIGN KEY (CustomerId) REFERENCES Customers(Id)
+);
+
+CREATE TABLE OrderDetails(
+	Id int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	OrderId int UNSIGNED NOT NULL,
+	ProductId int UNSIGNED NOT NULL,
+	Quantity decimal NOT NULL,
+	TotalProduct decimal NOT NULL,
+	FOREIGN KEY (OrderId)  REFERENCES Orders(Id),
+	FOREIGN KEY (ProductId) REFERENCES Products(Id)
+);
+
+insert into Products(Name,Description,Price,ImageName) values('Arepa con chorizo','Deliciosa arepa acompañada de chorizo de su res o pollo',2500,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Con-Chorizo.jpg ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa con carne','Deliciosa arepa acompañada con carne de res',2500,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Rellena-Carne.jpg ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa con todo','Deliciosa arepa acompañada con carne, pollo, chocharrón, huevo y salsas de la casa',7000,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Rellena-Con-Todo.jpg ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa con queso cuajada','Deliciosa arepa acompañada con un queso cuajada',3000,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Rellena-de-Queso-Cuajada.jpg ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa con queso ','Deliciosa arepa rellena con un queso tajado',3000,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Rellena-de-Queso.jpg ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa con huevos revueltos ','Deliciosa arepa rellena de huevos revueltos',2500,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Rellena-Huevos-Revueltos.jpg ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa con jamon y queso','Deliciosa arepa rellena con jamón y queso',2500,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Rellena-Jamon-Queso.jpg ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa con pollo','Deliciosa arepa rellena con pollo',3500,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Rellena-Pollo.jpg ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa con salchicha ','Deliciosa arepa rellena de salchicha ranchera',3000,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Rellena-Salchicha-Ranchera.png ');
+insert into Products(Name,Description,Price,ImageName) values('Arepa sencilla','Deliciosa arepa sencilla',700,'https://raw.githubusercontent.com/Jucer74/WebDevelopment/main/Proyecto/ImageProducts/Arepa-Sencilla.jpg ');
+
+docker run -d -p 3307:3306 --name arepasDB -e MYSQL_ROOT_PASSWORD=toor mysql
