@@ -3,8 +3,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import "../css/NavBar.css";
 import logo from "../imagenes/arepa.png";
 import Cookies from "universal-cookie";
-import {useDispatch,useSelector} from 'react-redux';
-import { log } from "../actions/actions";
+
 import { Link } from "react-router-dom";
 const cookies = new Cookies();
 
@@ -32,6 +31,7 @@ class NavigationBar extends Component {
   }
 
   render() {
+    // eslint-disable-next-line
     if (cookies.get("log") === "false" || cookies.get("log") == undefined) {
       return (
         <Navbar className="navbar border border-white ">
@@ -56,6 +56,7 @@ class NavigationBar extends Component {
         </Navbar>
       );
     }
+    // eslint-disable-next-line
     if (cookies.get("log") === "true") {
       return (
         <Navbar className="navbar border border-white ">

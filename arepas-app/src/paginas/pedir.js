@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import "../css/Menu.css";
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 export function Orders() {
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   
   let logged = useSelector((state) => state.logged.log);
   let id = useSelector((state) => state.logged.id);

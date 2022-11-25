@@ -1,18 +1,15 @@
-import React, { Component, useEffect, useState } from "react";
-import Cookies from "universal-cookie";
-import { useDispatch, useSelector } from "react-redux";
-import { log } from "../actions/actions";
-import { shopitem } from "../actions/actions";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-import { Container, Form, Card, Col } from "react-bootstrap";
+import { Container, Card, Col } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import "../App.css";
 
-const cookies = new Cookies();
+
 
 function Carrito(props) {
-  const dispatch = new useDispatch();
+  
 
   let xd = useSelector((state) => state.car.fetchedSpendings);
 

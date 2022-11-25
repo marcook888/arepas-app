@@ -3,10 +3,10 @@ import axios from "axios";
 import {
   MDBPagination,
   MDBPaginationItem,
+  // eslint-disable-next-line
   MDBPaginationLink,
 } from "mdb-react-ui-kit";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { Button, Container, Form, Card, Col } from "react-bootstrap";
+import { Button, Container, Card, Col } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Navbar from "react-bootstrap/Navbar";
 import { imagesUrl } from "../conexiones/urls";
@@ -24,7 +24,7 @@ function Menu2() {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [value, setValue] = useState("");
-  const [sortValue, setSortValue] = useState("");
+  const [setSortValue] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [XTotalCount] = useState(3);
   const [sortFilterValue, setSortFilterValue] = useState("");
@@ -42,13 +42,16 @@ function Menu2() {
   let RegisterDate = cookies.get("RegisterDate");
   let Address = cookies.get("Address");
   let PhoneNumber = cookies.get("PhoneNumber");
-
+// eslint-disable-next-line
   useEffect(() => {
     loadUsersData(0, 3, 0);
     console.log(cookies.get('Error'))
+    // eslint-disable-next-line
     if(cookies.get('log') === "true"){
+      // eslint-disable-next-line
       console.log('xd');
       dispatch(
+        // eslint-disable-next-line
         log(
           id,
           Email,
@@ -128,7 +131,9 @@ function Menu2() {
 
   const renderPagination = () => {
     if (data.length < 3 && currentPage === 0) return null;
+    // eslint-disable-next-line
     if (currentPage === 0) {
+      // eslint-disable-next-line
       return (
         <MDBPagination className="mb-0">
           <MDBPaginationItem>
@@ -146,6 +151,7 @@ function Menu2() {
       );
     } else if (
       currentPage < XTotalCount + XTotalCount &&
+      // eslint-disable-next-line
       data.length === XTotalCount
     ) {
       return (
@@ -213,7 +219,7 @@ function Menu2() {
       );
     }
   };
-
+// eslint-disable-next-line
   return (
     <Container fluid>
       <h1 className="letrica text-white">!!!Arepas!!!</h1>
@@ -263,7 +269,8 @@ function Menu2() {
                   <Card.Text>{item.Description}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  {selector == true  && (
+                  
+                    {selector == true  && (
                     <Button
                     className="left"
                     variant="outline-danger"

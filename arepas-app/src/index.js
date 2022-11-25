@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createSlice, configureStore} from '@reduxjs/toolkit'
+import { configureStore} from '@reduxjs/toolkit'
 import allReducers from './reducers/reducers'
 import { Provider } from 'react-redux';
 

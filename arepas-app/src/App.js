@@ -7,7 +7,6 @@ import { Register } from './paginas/Register';
 import { Layout } from './layout';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
-import {baseUrl} from './conexiones/urls'
 import {Details} from './paginas/Details'
 import Menu from './paginas/Menu'
 import Carrito from './paginas/carrito'
